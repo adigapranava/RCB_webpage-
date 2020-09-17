@@ -1,0 +1,171 @@
+body{
+	margin: 0;
+	padding: 0;
+	background: #2B2A29;
+}
+
+section{
+	position: relative;
+	widows: 100%;
+	min-height: 100vh;
+	background-image: linear-gradient(-90deg,#2B2A29, #1a1918);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+section .content
+{
+	position: relative;
+	padding: 100px 50px 100px 150px;
+	box-sizing: border-box;
+}
+
+section .content h2
+{
+	color: #fff;
+	font-size: 3em;
+	font-weight: 800;
+}
+
+section .content p
+{
+	color: #eee;
+	font-size: 1.2em;
+	font-weight: 600;
+}
+
+section .content a
+{
+	position: relative;
+	display: inline-block;
+	padding: 15px 30px;
+	margin-top: 20px;
+	background: #EC1C24;
+	color: #fff;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 0.95em;
+	font-weight: 700;
+	letter-spacing: 2px;
+}
+
+section .image
+{
+	position: relative;
+	padding-right: 150px;
+	margin-left: 100px;
+}
+
+section .image img
+{
+	width: 500px;
+}
+
+section:before
+{
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: linear-gradient(-90deg, #EC1C24,#5c0a0e);
+	clip-path: polygon(54% 0, 100% 0, 100% 100%, 84% 100%);
+}
+
+.sci
+{
+	position: absolute;
+	left: 150px; 
+	padding: 0;
+	bottom: 10px;
+	display: flex;
+}
+
+.sci li
+{
+	list-style: none;
+}
+
+.sci li a
+{
+	text-decoration: none;
+	color: #999;
+	margin-right: 30px;
+	font-size: 0.9em;
+}
+
+.sci li a:hover
+{
+	color: #fff;
+}
+
+
+.nav{
+	position: absolute;
+	left: 150px;
+	top: 10px;
+	list-style: none;
+	display: flex;
+	padding: 0;
+	border-left: 5px solid #EC1C24;
+	padding-left: 20px;
+}
+
+.nav li
+{
+	list-style: none;
+}
+
+.nav li a
+{
+	text-decoration: none;
+	color: #aaa;
+	margin-right: 30px;
+	font-size: 1em;
+}
+
+.nav li a.active,
+.nav li a:hover
+{
+	color: #ff2562;
+}
+@media (max-width: 767px)
+{
+	section
+	{
+		display: block;
+	}
+
+	section .content
+	{
+		position: relative;
+		padding: 150px 25px 50px 50px;
+		box-sizing: border-box;
+	}
+	section .content h2
+	{
+		text-align: center;
+	}
+	section .content a
+	{
+		padding: 15px 30px;
+		margin-top: 20px;
+	}
+	section .image
+	{
+		padding-right: 15px;
+		margin-left: 80px;
+	}
+	.nav
+	{
+		display: block;
+		left: 50px;
+	}
+	section:before
+	{
+		clip-path: polygon(100% 0, 100% 0%, 100% 100%, 0 100%);
+	}
+}
+

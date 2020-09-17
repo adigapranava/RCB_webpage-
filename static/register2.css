@@ -1,0 +1,115 @@
+body{
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+	background: #d41e1e;
+	background-size: cover;
+}
+
+#email_holder, #password_holder, #age_holder{
+	margin: 6px 0;
+	width: 300px;
+	height: 30px;
+	outline: none;
+	border: none;
+	background-color: #444;
+	font-size: 25px;
+	letter-spacing: 1px;
+	color: #f72;
+	padding: 5px;
+	margin-bottom: 10px;
+	border-radius: 5px;
+}
+
+
+.register{
+	margin: 0;
+	padding: 40px 30px;
+	background: #222;
+	text-align: center;
+	box-sizing: border-box;
+	position: absolute;
+	box-shadow: 0 0 0 200vh rgba(0,0,0, 0.9);
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%);
+	transform: translate(-50%, -50%);
+}
+
+.register .active{
+	display: none;
+}
+
+.notification .active{
+	display: none;
+}
+
+.otp{
+	margin: 0;
+	padding: 40px 30px;
+	background: #222;
+	max-width: 350px;
+	text-align: center;
+	box-sizing: border-box;
+	position: absolute;
+	top: 25%;
+	box-shadow: 0 0 0 100vh rgba(0,0,0, 0.9);
+	right: 50%;
+}
+
+.head h2{
+	color: #ccc;
+	margin: 0;
+	padding: 0;
+	padding-top: 10px;
+	font-size: 40px;
+	font-family: 'Alegreya Sans', sans-serif;
+	letter-spacing: 2px;
+}
+
+.head h6{
+	font-weight: 10;
+	color: #f72;
+	margin: 0;
+	padding: 10px 10px 40px;
+	font-size: 15px;
+}
+
+.body{
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 20px;
+}
+
+.body .otp_ip{
+	outline: none;
+	border: none;
+	background-color: #444;
+	height: 30px;
+	text-align: center;
+	font-size: 25px;
+	letter-spacing: 7px;
+	color: #f72;
+	padding: 5px;
+	margin-bottom: 10px;
+	border-radius: 10px;
+}
+
+.body .submit{
+	outline: none;
+	border: none;
+	background-color: #f72;
+	height: 40px;
+	text-align: center;
+	font-size: 22px;
+	letter-spacing: 2px;
+	color: rgb(56 38 38);
+	font-family: 'Alegreya Sans', sans-serif;
+	border-radius: 5px;
+	padding: 10px 8px 10px 8px;
+	margin-top: 5px;
+}
+
+.otp.active{
+	display: none;
+}
