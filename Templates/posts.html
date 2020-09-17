@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'posts.css') }}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Noto+Sans&family=Orbitron:wght@500&family=Spartan:wght@500&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/63ff17dcad.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="{{ url_for('static', filename = 'posts.js') }}"></script>
+<title>Post</title>
+</head>
+	<body>
+		<div id="header">
+	        <ul class="navbar_ul">
+				<li class="navbar_li"><a class="n_a" href="{{ url_for('index') }}">Home</a></li>
+				<li class="navbar_li"><a class="n_a" href="#news">News</a></li>
+				<li class="navbar_li dropdown">
+				<a class="n_a" href="#" class="dropbtn">More</a>
+				<div class="dropdown-content">
+					<a class="d_a" href="{{ url_for('post') }}">Posts</a>
+					<a class="d_a" href="{{ url_for('profile') }}">Profile</a>
+					<a class="d_a" href="{{ url_for('login') }}">Login</a>
+					<a class="d_a" href="{{ url_for('logout') }}">Logout</a>
+					<a class="d_a" href="{{ url_for('team') }}">Team</a>
+				</div>
+				</li>
+			</ul>
+		</div>
+
+		<button style="margin:460px 20px 0 60px;position: absolute;" onclick="toggle_open()">ADD POST<i class="fas fa-plus" style="margin: 0;padding: 0 10px; font-size: 20px;"></i></button>
+		<div style="display: flex; flex-direction: row;">		
+			<div class="profile">
+				<h1 style="font-family: 'Spartan', sans-serif;">Profile</h1>
+				<img id="file-ip-2-preview" style="border-radius: 50%;border-style: solid;	border-color: #66fcf1;margin-bottom: 20px; z-index: -1;" src="{{ url_for('static', filename = 'img/profile.jpg') }}" width="120px">
+				<div><b>Name:</b><div id="profile_name">NOT LOGGED-IN </div></div>
+			</div>
+
+			<div class="post">
+				<div class="previous">
+					<img src="{{ url_for('static', filename = 'img/previous.png') }}" width="90px" onclick="previous_post()">
+				</div>
+
+				<div class="post_flex" style="background:#d9d8d8;">
+					<div class="post_profile"><img src="{{ url_for('static', filename='img/profile.jpg')}}" width="40px" id="file-post-1-preview"><div  id="name-post-1-preview" style="font-size: 24px;">No Posts</div></div>
+					<div class="pic" style="min-width: 600px;min-height: 300px;text-align: center; background: #2d2d2d; text-align: center;"><img src="{{ url_for('static', filename = 'img/placeholder.jpg') }}"  style="max-height: 500px; max-width: 700px;" id="file-post-2-preview"></div>
+					<div class="profile_review"><i class="far fa-heart"></i></div>
+				</div>
+
+				<div class="next">
+					<img src="{{ url_for('static', filename = 'img/next.png') }}" width="90px" onclick="next_post()">
+				</div>
+			</div>
+		</div>
+
+		<div class="post_flex posting" style="background:#d9d8d8; max-width: 700px; overflow: auto;">
+			<label for="file-ip-1" class="profile_edit"><i class="fas fa-camera"></i> UPLOAD</label>
+			<input type="file" id= "file-ip-1" accept="image/*"
+		    onchange="showPreview(event);" style="display: none;">
+		    <i class="fas fa-times" style="float: right;padding-right: 20px;font-size: 30px;" onclick="toggle_close()"></i>
+			<div class="pic" style="width: 600px; background: #2d2d2d; text-align: center;"><img src="{{ url_for('static', filename = 'img/placeholder.jpg')}}" style="max-height: 500px; max-width: 700px;"id="file-ip-1-preview"></div>
+			<div class="profile_review"><i class="far fa-heart"></i> <button style="float: right; margin:5px 20px;" onclick="add_post()">POST<i class="fas fa-paper-plane" style="margin: 0;padding: 0 10px; font-size: 20px;"></i></button></div>
+		</div>
+
+		<div class="notification" style="position: relative; z-index: 2;">
+          <div style="position: absolute; top: -550px;  right: 10px; z-index: 100;box-shadow: 0px 0px 10px 1px  #000;" class="error">
+            <div style="position: relative; width: 300px; background: rgb(236, 28, 36); position: relative; padding: 1px 0px 1px 10px;color: #ddd;">
+              <p style="padding: 0 30px 0 30px; font-weight: 600;font-size: 18px; position: relative;top: 10px;">RCB</p>
+              <i style="position: absolute; right: 10px; top: 5px; font-size: 28px; font-weight: 600;" class="fas fa-window-close" onclick="toggleMenu()" aria-hidden="true"></i>
+            </div>
+            <div style="position: relative;width: 300px;background: #483a3a; padding: 16px 5px;color: #eee;text-align: center;" id="notification_text">
+               <i class="fas fa-check-circle" style="padding-right: 10px;color: #4fa; "></i>  Posted  Successfully
+            </div>      
+          </div>
+        </div>
+	</body>
+</html>
+

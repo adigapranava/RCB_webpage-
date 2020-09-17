@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+   <head>
+      <title>RCB</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'main.css') }}">
+      <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+      <script src="https://kit.fontawesome.com/63ff17dcad.js" crossorigin="anonymous"></script>
+   </head>
+   <style type="text/css">
+     .notification.active{
+      display: none;
+     }
+   </style>
+   <style type="text/css">
+      .notification .active{
+        display: none;
+      }
+    </style>
+   <body>
+    <script>
+      function toggleMenu(){
+      let navigatio = document.querySelector('.error');
+      navigatio.classList.toggle('active');
+    }
+    </script>
+      {% with messages = get_flashed_messages() %}
+         {% if messages %}
+            <ul>
+                {% for message in messages %}
+                <div class="notification" style="position: relative; z-index: 2;">
+          <div style="position: absolute; top: 20px;  right: 10px; z-index: 100;box-shadow: 0px 0px 10px 1px  #000;" class="error">
+            <div style="position: relative; width: 300px; background: rgb(236, 28, 36); position: relative; padding: 1px 0px 1px 10px;color: #ddd;">
+              <p style="padding: 0 30px 0 30px; font-weight: 600;font-size: 18px; position: relative;top: 10px;">RCB</p>
+              <i style="position: absolute; right: 10px; top: 5px; font-size: 28px; font-weight: 600;" class="fas fa-window-close" onclick="toggleMenu()" aria-hidden="true"></i>
+            </div>
+            <div style="position: relative;width: 300px;background: #483a3a; padding: 10px 5px;color: #eee;">
+              {{message}}
+            </div>      
+          </div>
+        </div>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+
+		
+      <nav class="navbar navbar-light bg-light" style="font-family: 'Righteous', cursive;">
+        <a class="navbar-brand" href="#">
+          <img src="{{url_for('static', filename = 'img/logo.png')}}" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+          Royal Challengers Bangalore
+        </a>
+      </nav>
+   
+         <nav class="navbar navbar-dark bg-dark" style="border-bottom: 2px solid #faa;position: absolute; z-index: 1;width: 100%;">
+           <!-- Navbar content -->
+
+           <a class="navbar-brand" style="border-bottom: 2px solid red;" href="#">Home</a>
+           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+             <span class="navbar-toggler-icon"></span>
+           </button>
+
+           <div class="collapse navbar-collapse" id="navbarSupportedContent">
+             <ul class="navbar-nav mr-auto">
+               <li class="nav-item active">
+                 <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+               </li>
+               <li class="nav-item">
+                 <a class="nav-link" href="{{ url_for('team') }}">Team</a>
+               </li>   
+               <li class="nav-item">
+                 <a class="nav-link" href="{{ url_for('profile') }}">Profile</a>
+               </li>   
+               <li class="nav-item">
+                 <a class="nav-link" href="{{ url_for('post') }}">Post</a>
+               </li>   
+               <li class="nav-item">
+                 <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+               </li>
+               <li class="nav-item">
+                 <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+               </li>                 
+             </ul>
+             <form class="form-inline my-2 my-lg-0">
+               <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+               <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+             </form>
+           </div>
+   
+         </nav>
+
+         <section>
+            <div class="content">
+              <div>
+                <h2>RCB</h2>
+                <p>
+                  The Royal Challengers Bangalore are a franchise cricket team based in Bangalore, Karnataka, that plays in the Indian Premier League. It was founded in 2008 by United Spirits and named after the company's liquor brand Royal Challenge.
+                </p>
+                <a href="#">Learn More</a>
+              </div>
+            </div>
+              <div class="image">
+                <img src="{{url_for('static', filename = 'img/logo.png')}}">
+              </div>
+              <ul class="sci">
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Twitter</a></li>
+                <li><a href="#">Instagram</a></li>
+              </ul>
+            </div>
+          </section>
+
+         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+   </body>
+</html>
+
+
+

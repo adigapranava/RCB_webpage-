@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>register</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'register2.css') }}">
+	<script type="text/javascript" src="{{ url_for('static', filename = 'register2.js') }}"></script>
+	<script src="https://kit.fontawesome.com/63ff17dcad.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+
+	{% with messages = get_flashed_messages() %}
+         {% if messages %}
+            <ul>
+                {% for message in messages %}
+                <div class="notification">
+					<div style="position: absolute;	top: 60px;	right: 10px; z-index: 100;box-shadow: 0px 0px 10px 1px  #000;" class="error">
+						<div style="position: relative; width: 300px; background: rgb(236, 28, 36); position: relative; padding: 1px 0px 1px 10px;color: #ddd;">
+							<p style="padding: 0 30px 0 30px; font-weight: 600;font-size: 18px;">RCB</p>
+							<i style="position: absolute; right: 10px; top: 20px; font-size: 28px; font-weight: 600;" class="fas fa-window-close" onclick="toggleMenu()" aria-hidden="true"></i>
+						</div>
+						<div style="position: relative;width: 300px;background: #483a3a; padding: 10px 5px;color: #eee;" id="msgs">
+							{{message}}
+						</div>			
+					</div>
+				</div>
+				{% endfor %}
+			</ul>
+		{% endif %}
+	{% endwith %}
+
+	 <div class="notification2">
+		<div style="position: absolute;	top: 20px;	right: 10px; z-index: 100;box-shadow: 0px 0px 10px 1px  #000;" class="error">
+			<div style="position: relative; width: 300px; background: rgb(236, 28, 36); position: relative; padding: 1px 0px 1px 10px;color: #ddd;">
+				<p style="padding: 0 30px 0 30px; font-weight: 600;font-size: 18px;">RCB</p>
+				<i style="position: absolute; right: 10px; top: 20px; font-size: 28px; font-weight: 600;" class="fas fa-window-close" onclick="close_noti()" aria-hidden="true"></i>
+			</div>
+			<div style="position: relative;width: 300px;background: #483a3a; padding: 10px 5px;padding-left: 10px;color: #eee;" id="msgs">
+				any msg
+			</div>			
+		</div>
+	</div>
+
+	<div class="register">
+		<div style="display: flex;flex-direction: row-reverse; margin: 0;padding: 0; color: #ccc; font-size: 30px;"><i class="fas fa-times" onclick="toggleMenu()" ></i></div>
+		<div class="head">
+			<h2>Register</h2>
+			<h6>Welcome to RCB</h6>
+		</div>
+		<form id="form">
+		<div class="body">
+			<input type="email" required="" name="email" placeholder="E-mail" id="email_holder">
+			<input type="password" placeholder="Password" onkeyup="nospace(this)" id="password_holder" minlength="6" required="">
+			<input type="int" name="age" placeholder="Age" maxlength="2" required="" id="age_holder" onkeyup="intonly(this)">
+			<input type="submit" id="submit_form" name="submit" value="Submit" class="submit">
+			<label style="margin-top: 10px; color: #ddd; font-size: 15px;">Already have an account? <a href="{{ url_for('login') }}" style="color: #aaa;">login</a></label>
+		</div>
+		</form>
+	</div>
+
+	
+
+
+	<div class="otp">
+		<div style="display: flex;flex-direction: row-reverse; margin: 0;padding: 0; color: #ccc; font-size: 30px;"><i class="fas fa-times" onclick="toggleMenu2()" ></i></div>
+		<div class="head">
+			<h2>Varification</h2>
+			<h6>You will get varification code via mail</h6>
+		</div>
+		<div class="body">
+			<input type="password" name="otp" maxlength="6" placeholder="code" onkeyup="intonly(this)" class="otp_ip" id="otp_ip" minlength="6" required="">
+			<input type="submit" name="submit" value="Varify" class="submit" onclick="check_otp()">
+			<label style="margin-top: 10px; color: #ddd; font-size: 15px;">Didn't Recive mail <a href="#" style="color: #aaa;" onclick="send_otp()">resend again</a></label>
+		</div>
+	</div>
+	
+</body>
+</html>

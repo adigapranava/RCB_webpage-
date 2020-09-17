@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Profile</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'profile.css') }}">
+	<script src="https://kit.fontawesome.com/63ff17dcad.js" crossorigin="anonymous"></script>
+	<script src="{{ url_for('static', filename = 'profile.js') }}"></script>
+	<style type="text/css">
+		.submit{
+			background: rgb(236 28 36);
+			padding: 8px 18px;
+			font-size: 15px;
+			font-weight: 700;
+			color: #fff;
+			outline: none;
+			border: none;
+			letter-spacing: 1px;
+			text-transform: uppercase;
+		}
+
+	</style>
+</head>
+<body>
+
+	<ul>
+                
+        <div class="notification" style="position: relative; z-index: 2;">
+          <div style="position: absolute; top: 20px;  right: 10px; z-index: 100;box-shadow: 0px 0px 10px 1px  #000;" class="error">
+            <div style="position: relative; width: 300px; background: rgb(236, 28, 36); position: relative; padding: 1px 0px 1px 10px;color: #ddd;">
+              <p style="padding: 0 30px 0 30px; font-weight: 600;font-size: 18px; position: relative;top: 10px;">RCB</p>
+              <i style="position: absolute; right: 10px; top: 5px; font-size: 28px; font-weight: 600;" class="fas fa-window-close" onclick="toggleMenu()" aria-hidden="true"></i>
+            </div>
+            <div style="position: relative;width: 300px;background: #483a3a; padding: 16px 5px;color: #eee;text-align: center;">
+               <i class="fas fa-check-circle" style="padding-right: 10px;color: #4fa; "></i>  Profile Updated Successfully
+            </div>      
+          </div>
+        </div>
+        
+    </ul>
+
+	<div class="login">
+	<div class="box">
+		<div class="first">
+			<h2>Profile</h2>
+			<a href="{{ url_for('index') }}"><i class="fas fa-window-close"></i></a>
+		</div>
+		<form method = post>
+			<div class="inputBox img_tg">
+				<img class="profile_img preview" id="file-ip-1-preview" width="120px" src="{{ url_for('static', filename = 'img/profile.jpg') }}">
+			</div>
+			<div class="inputBox">
+				<input type="text" name = name required="" id="profile_name" value="">
+				<label>Name</label>
+			</div>
+			<div class="inputBox">
+				<input type="email" name=email required="" id="profile_email" value="">
+				<label>E-mail</label>
+			</div>
+			<button class="submit" onclick="save_to_db()" type="button">Save</button>		
+		</form>
+	</div>
+	</div>
+</body>
+</html>
+
+<div class="inputBox img_tg form-input" style="position: absolute; top:50%; left: -34%;">
+	<label for="file-ip-1" class="profile_edit"><i class="fas fa-camera"></i></label>
+	<input type="file" id= "file-ip-1" accept="image/*"
+    onchange="showPreview(event);">
+</div>

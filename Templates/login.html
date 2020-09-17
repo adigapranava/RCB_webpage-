@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+   <head>
+      <title>login</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+      <style type="text/css">
+         .notification.active{
+          display: none;
+         }
+       </style>
+   </head>
+   <body style="background: #21201f; color: #ddd;">    
+      <script>
+        function toggleMenu(){
+        let navigatio = document.querySelector('.notification');
+        navigatio.classList.toggle('active');
+      }
+      </script>  
+      <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+          <img src="logo.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+          Royal Challengers Bangalore
+        </a>
+      </nav>
+   
+         <nav class="navbar navbar-dark bg-dark" style="border-bottom: 2px solid #faa;">
+           <!-- Navbar content -->
+
+           <a class="navbar-brand" style="border-bottom: 2px solid red;" href="#">Login</a>
+           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+             <span class="navbar-toggler-icon"></span>
+           </button>
+
+           <div class="collapse navbar-collapse" id="navbarSupportedContent">
+             <ul class="navbar-nav mr-auto">
+               <li class="nav-item">
+                 <a class="nav-link" href="{{ url_for('index') }}">Home <span class="sr-only">(current)</span></a>
+               </li>
+               <li class="nav-item">
+                 <a class="nav-link" href="{{ url_for('team') }}">Team</a>
+               </li>   
+               <li class="nav-item">
+                 <a class="nav-link" href="{{ url_for('profile') }}">Profile</a>
+               </li>   
+               <li class="nav-item active">
+                 <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+               </li>
+               <li class="nav-item">
+                 <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+               </li>             
+             </ul>
+             <form class="form-inline my-2 my-lg-0">
+               <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+               <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+             </form>
+           </div>
+   
+         </nav>
+
+         {% if error %}
+          <div class="notification" aria-live="polite" aria-atomic="true" style="position: relative; min-height: 200px;">
+                  <div style="position: absolute; top: 0; left: 40%; border: 1px solid #aaa;">
+                    <div class="toast-header" style="background: #E00000; color: #eee">
+                      <strong class="mr-auto">RCB</strong>
+                      <small>now</small>
+                      <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close" onclick="toggleMenu()">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="toast-body" style="background: #BBB3B3; color: #342929">
+                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-exclamation-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+                      </svg>
+                      <strong>Error: </strong>{{ error }}
+                    </div>
+                  </div>
+                </div>
+         {% endif %}
+         {% with messages = get_flashed_messages() %}
+         {% if messages %}
+            <ul>
+                 {% for message in messages %}
+                 <div class="notification" aria-live="polite" aria-atomic="true" style="position: relative; min-height: 200px;">
+                    <div style="position: absolute; top: 0; right: 0; border: 1px solid #aaa;">
+                      <div class="toast-header" style="background: #5AEC00">
+                        <strong class="mr-auto">RCB</strong>
+                        <small>now</small>
+                        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close" onclick="toggleMenu()">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="toast-body" style="background: #BBB3B3; color: #342929">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-patch-check-fll" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zm.287 5.984a.5.5 0 0 0-.708-.708L7 8.793 5.854 7.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+                        </svg>
+                        {{message}}
+                      </div>
+                    </div>
+                  </div>
+                 {% endfor %}
+              </ul>
+           {% endif %}
+        {% endwith %}
+
+         <form class=" p-5" action = "" method = post style="border: 5px solid #212121; border-radius: 15px; width: 350px; transform: translate(150%, 20%); background: #F5F5F5; color: #342929">
+           <div class="form-group">
+             <label for="exampleDropdownFormEmail2">Email address</label>
+             <input type="email" class="form-control" id="exampleDropdownFormEmail2" placeholder="email@example.com" name = email value = "{{request.form.email }}" style="width: 200px;">                           
+           </div>
+           <div class="form-group">
+             <label for="exampleDropdownFormPassword2">Password</label>
+             <input type="password" class="form-control" id="exampleDropdownFormPassword2" placeholder="Password" name = password style= "width: 200px; ">
+           </div>
+           <div class="form-group">
+             <div class="form-check">
+               <input type="checkbox" class="form-check-input" id="dropdownCheck2">
+               <label class="form-check-label" for="dropdownCheck2">
+                 Remember me
+               </label>
+             </div>
+           </div>
+           <button type="submit" style="background: #212121" value = Login class="btn btn-primary">Login</button>
+         </form>
+         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+   </body>
+</html>
