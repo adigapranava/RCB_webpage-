@@ -28,7 +28,7 @@ def send_mail(to_address, msgs, subject = "message from rcbfanclub"):
 
     message = msgs
 
-    password = "rcbfanclub"
+    password = ""
     msg['From'] = "rcbfanclub402@gmail.com"
     msg['To'] = to_address
     msg['Subject'] = subject
